@@ -7,11 +7,15 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import org.kodein.di.KodeinAware
+import org.kodein.di.KodeinTrigger
 
 
-abstract class GithubFragment<B : ViewDataBinding> : Fragment() {
+abstract class GithubFragment<B : ViewDataBinding> : Fragment(), KodeinAware {
 
     protected lateinit var binding: B
+
+    override val kodeinTrigger = KodeinTrigger()
 
     abstract val layoutId: Int
 
@@ -27,6 +31,7 @@ abstract class GithubFragment<B : ViewDataBinding> : Fragment() {
         with(binding) {
             setLifecycleOwner(this@GithubFragment)
         }
+        kodeinTrigger.trigger()
     }
 
 }

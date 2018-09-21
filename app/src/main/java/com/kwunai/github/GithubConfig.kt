@@ -5,10 +5,10 @@ import com.kwunai.github.ext.getDeviceId
 object GithubConfig {
 
     val SCOPES = listOf("user", "repo", "notifications", "gist", "admin:org")
-    const val clientId = "cccb7d70ba4fe6d4f62d"
-    const val clientSecret = "30bea5fc021ed503bef21e23ce8e2b02d588ab6c"
-    const val note = "kotliner.cn"
-    const val noteUrl = "http://www.kotliner.cn"
+    const val clientId = "aa267a3149ab8350add7"
+    const val clientSecret = "4ade8262d40088bb2553b85e55c08be52e4a862c"
+    const val note = "kotlin.cn"
+    const val noteUrl = "https://github.com/liuzitong123a"
 
     val fingerPrint by lazy {
         (GithubApp.INSTANCE.getDeviceId() + clientId)
