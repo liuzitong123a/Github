@@ -1,3 +1,3 @@
 # kwunai.github
-ViewModal+LiveData+Rxjava+Kodein+MVVM练手项目，使用Github的Api
+ViewModal+LiveData+Rxjava+Kodein+MVVM练手项目，使用Github的Api<br>
 此项目正在开发中...
