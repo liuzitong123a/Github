@@ -1,7 +1,6 @@
 package com.kwunai.github.common
 
 import android.databinding.DataBindingUtil
-import android.databinding.DataBindingUtil.setContentView
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
