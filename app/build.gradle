@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-noarg'
+
+noArg {
+    annotations "com.kwunai.github.anno.PoKo"
+}
+
+android {
+
+    buildToolsVersion build_version.buildToolsVersion
+    compileSdkVersion build_version.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.kwunai.github"
+        minSdkVersion build_version.minSdkVersion
+        targetSdkVersion build_version.targetSdkVersion
+        versionCode build_version.versionCode
+        versionName build_version.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation libs.kotlin_stdlib
+
+    implementation libs.support_v7
+    implementation libs.recyclerview
+    implementation libs.design
+    implementation libs.constraint
+
+    implementation libs.arch_comp_extension
+    kapt libs.arch_comp_compiler
+
+    implementation libs.arch_comp_room
+    implementation libs.arch_comp_room_rxjava
+    kapt libs.arch_comp_room_compiler
+
+    implementation libs.arch_comp_navigation
+    implementation libs.arch_comp_navigation_ui
+
+    implementation libs.retrofit
+    implementation libs.retrofit_gson
+    implementation libs.retrofit_rxjava
+
+    implementation libs.okhttp
+    implementation libs.okhttp_logging
+
+    implementation libs.glide
+    kapt libs.glide_compiler
+
+    implementation libs.gson
+
+    implementation libs.rxkotlin
+    implementation libs.rxandroid
+
+    implementation libs.autodispose
+    implementation libs.autodispose_ktx
+    implementation libs.autodispose_archs_ktx
+
+    implementation libs.kodein
+    implementation libs.kodein_android
+    implementation libs.kodein_android_support
+
+    implementation libs.logger
+    implementation libs.stetho
+
+    testImplementation libs.junit
+    androidTestImplementation libs.espresso_test_runner
+    androidTestImplementation libs.espresso_core
+}
+
+kapt {
+    generateStubs = true
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas".toString())
+    }
+}
