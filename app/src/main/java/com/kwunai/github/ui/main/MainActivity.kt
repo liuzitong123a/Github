@@ -1,7 +1,8 @@
-package com.kwunai.github
+package com.kwunai.github.ui.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.kwunai.github.R
 
 class MainActivity : AppCompatActivity() {
 
