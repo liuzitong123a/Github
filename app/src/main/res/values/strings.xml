@@ -9,4 +9,12 @@
     <string name="login_hint_username">Email address</string>
     <string name="login_hint_password">Password</string>
     <string name="login_sign_in">Sign in</string>
+
+    <string name="repositories">Repositories</string>
+    <string name="people">People</string>
+    <string name="issues">Issues</string>
+    <string name="about">About</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

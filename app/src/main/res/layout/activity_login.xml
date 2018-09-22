@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.kwunai.github.ui.user.login.LoginViewModel" />
+            type="com.kwunai.github.ui.login.LoginViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -16,7 +16,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center_horizontal"
-        tools:context=".ui.user.login.LoginActivity">
+        tools:context=".ui.login.LoginActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

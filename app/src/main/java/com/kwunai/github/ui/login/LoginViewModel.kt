@@ -1,4 +1,4 @@
-package com.kwunai.github.ui.user.login
+package com.kwunai.github.ui.login
 
 import android.arch.lifecycle.MutableLiveData
 import com.kwunai.github.common.GithubViewModel

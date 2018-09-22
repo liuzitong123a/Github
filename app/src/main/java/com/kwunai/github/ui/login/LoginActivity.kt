@@ -1,4 +1,4 @@
-package com.kwunai.github.ui.user.login
+package com.kwunai.github.ui.login
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
@@ -32,9 +32,7 @@ class LoginActivity : GithubActivity<ActivityLoginBinding>() {
             toast(it?.message ?: "登录失败")
         })
         viewModel.user.observe(this, Observer<UserRsp> { it ->
-            it?.let {
-                toast("登录成功")
-            }
+
         })
     }
 }

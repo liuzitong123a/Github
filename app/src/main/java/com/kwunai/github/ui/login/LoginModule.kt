@@ -1,4 +1,4 @@
-package com.kwunai.github.ui.user.login
+package com.kwunai.github.ui.login
 
 import com.kwunai.github.ext.addLifecycle
 import org.kodein.di.Kodein
