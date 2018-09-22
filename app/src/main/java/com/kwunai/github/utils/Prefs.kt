@@ -1,6 +1,7 @@
 package com.kwunai.github.utils
 
 import android.content.SharedPreferences
+import com.google.gson.Gson
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -16,6 +17,21 @@ private inline fun <T> SharedPreferences.delegate(
 
             override fun setValue(thisRef: Any, property: KProperty<*>, value: T) =
                     edit().setter(key ?: property.name, value).apply()
+        }
+
+inline fun <reified T> SharedPreferences.gson(defaultValue: T, key: String? = null) =
+        object : ReadWriteProperty<Any, T> {
+            private val gson = Gson()
+
+            override fun getValue(thisRef: Any, property: KProperty<*>): T {
+
+                val s = getString(key ?: property.name, "")
+
+                return if (s.isBlank()) defaultValue else gson.fromJson(s, T::class.java)
+            }
+
+            override fun setValue(thisRef: Any, property: KProperty<*>, value: T) =
+                    edit().putString(key ?: property.name, gson.toJson(value)).apply()
         }
 
 fun SharedPreferences.string(key: String? = null, defValue: String = "", isEncrypt: Boolean = false): ReadWriteProperty<Any, String> {

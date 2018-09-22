@@ -1,15 +1,12 @@
 package com.kwunai.github.data
 
 import android.content.SharedPreferences
-import com.kwunai.github.utils.boolean
-import com.kwunai.github.utils.initKey
-import com.kwunai.github.utils.int
-import com.kwunai.github.utils.string
+import com.kwunai.github.entity.UserRsp
+import com.kwunai.github.utils.*
 
 class PrefsHelper(prefs: SharedPreferences) {
 
     init {
-        // 初始化密钥，且密钥是16位的
         prefs.initKey("kwunai_github_v1")
     }
 
@@ -17,6 +14,8 @@ class PrefsHelper(prefs: SharedPreferences) {
     var username: String by prefs.string(isEncrypt = true)
     var password: String by prefs.string(isEncrypt = true)
     var token: String by prefs.string(isEncrypt = true)
+
+    var user: UserRsp? by prefs.gson<UserRsp?>(null)
 
     fun isLoggedIn(): Boolean = token.isNotEmpty()
 }

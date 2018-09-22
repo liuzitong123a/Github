@@ -69,6 +69,7 @@ class LoginViewModel(
                     when (it) {
                         is Resource.Loading -> loading.postValue(true)
                         is Resource.Success -> {
+                            helper.user = it.result
                             loading.postValue(false)
                             user.postValue(it.result)
                         }

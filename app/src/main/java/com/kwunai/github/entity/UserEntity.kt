@@ -1,6 +1,5 @@
 package com.kwunai.github.entity
 
-import android.os.Parcelable
 import com.kwunai.github.anno.PoKo
 
 @PoKo
