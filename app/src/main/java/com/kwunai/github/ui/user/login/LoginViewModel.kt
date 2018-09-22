@@ -4,23 +4,26 @@ import android.arch.lifecycle.MutableLiveData
 import com.kwunai.github.common.GithubViewModel
 import com.kwunai.github.data.PrefsHelper
 import com.kwunai.github.entity.AuthorizationReq
-import com.kwunai.github.entity.AuthorizationRsp
 import com.kwunai.github.entity.Resource
-import com.kwunai.github.entity.Status
+import com.kwunai.github.entity.UserRsp
 import com.kwunai.github.ext.*
 import com.kwunai.github.http.api.AuthService
+import com.kwunai.github.http.api.UserService
+import com.kwunai.github.http.error.TokenInvalidException
+import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
 class LoginViewModel(
         private val helper: PrefsHelper,
-        private val webService: AuthService
+        private val authService: AuthService,
+        private val userService: UserService
 ) : GithubViewModel() {
 
     val username: MutableLiveData<String> = MutableLiveData()
     val password: MutableLiveData<String> = MutableLiveData()
     val error: MutableLiveData<Throwable> = MutableLiveData()
     val loading: MutableLiveData<Boolean> = MutableLiveData()
-    val authorizationRsp: MutableLiveData<AuthorizationRsp> = MutableLiveData()
+    val user: MutableLiveData<UserRsp> = MutableLiveData()
 
     init {
         username.value = helper.username
@@ -29,7 +32,7 @@ class LoginViewModel(
 
     fun login() {
 
-        checkEmail(username.value).no {
+        checkEmail(username.value).yes {
             error.value = IllegalArgumentException("邮箱格式不正确")
             return@login
         }
@@ -41,24 +44,37 @@ class LoginViewModel(
 
         helper.username = username.value ?: ""
         helper.password = password.value ?: ""
-        webService.createAuthorization(AuthorizationReq())
+        authService.createAuthorization(AuthorizationReq())
                 .subscribeOn(Schedulers.io())
-                .map { Resource.success(it.data) }
+                .doOnNext { if (it.token.isEmpty()) throw TokenInvalidException(it.id) }
+                .retryWhen { it ->
+                    it.flatMap {
+                        if (it is TokenInvalidException) {
+                            authService.deleteAuthorization(it.authId)
+                        } else {
+                            Observable.error(it)
+                        }
+                    }
+                }
+                .flatMap {
+                    helper.token = it.token
+                    helper.authId = it.id
+                    userService.getAuthenticatedUser()
+                }
+                .map { Resource.success(it) }
                 .startWith(Resource.loading())
                 .onErrorReturn { e -> Resource.error(e) }
-                .bindLifecycle(this)
+                .bindLifecycle(viewModel = this)
                 .subscribe {
-                    when (it.status) {
-                        Status.LOADING -> loading.postValue(true)
-                        Status.SUCCESS -> {
-                            helper.isLoggedIn = true
-                            helper.token = it.data!!.token
+                    when (it) {
+                        is Resource.Loading -> loading.postValue(true)
+                        is Resource.Success -> {
                             loading.postValue(false)
-                            authorizationRsp.postValue(it.data)
+                            user.postValue(it.result)
                         }
-                        Status.ERROR -> {
+                        is Resource.Error -> {
                             loading.postValue(false)
-                            error.postValue(it.throwable)
+                            error.postValue(it.error)
                         }
                     }
                 }

@@ -35,6 +35,7 @@ class GithubApp : Application(), KodeinAware {
         Stetho.initializeWithDefaults(this)
         val formatStrategy = PrettyFormatStrategy.newBuilder()
                 .tag(GithubConstant.LOGGER_TAG)
+                .showThreadInfo(false)
                 .build()
         Logger.addLogAdapter(AndroidLogAdapter(formatStrategy))
         Logger.addLogAdapter(object : AndroidLogAdapter() {

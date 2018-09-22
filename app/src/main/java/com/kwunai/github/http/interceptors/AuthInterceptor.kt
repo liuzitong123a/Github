@@ -14,13 +14,13 @@ class AuthInterceptor(
         val original = chain.request()
         return chain.proceed(original.newBuilder().apply {
             when {
-                original.url().pathSegments().contains("Authorization") -> {
+                original.url().pathSegments().contains("authorizations") -> {
                     val auth = "${helper.username}:${helper.password}".let {
                         "Basic ${Base64.encodeToString(it.toByteArray(), Base64.DEFAULT).trim()}"
                     }
                     header("Authorization", auth)
                 }
-                helper.isLoggedIn -> {
+                helper.isLoggedIn() -> {
                     val auth = "Token ${helper.token}"
                     header("Authorization", auth)
                 }

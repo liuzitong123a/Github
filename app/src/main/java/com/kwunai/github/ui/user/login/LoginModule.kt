@@ -14,7 +14,7 @@ const val LOGIN_MODULE_TAG = "LOGIN_MODULE_TAG"
 val loginModule = Kodein.Module(LOGIN_MODULE_TAG) {
 
     bind<LoginViewModel>() with scoped(AndroidComponentsWeakScope).singleton {
-        LoginViewModel(instance(), instance()).apply {
+        LoginViewModel(instance(), instance(), instance()).apply {
             addLifecycle(instance<LoginActivity>())
         }
     }

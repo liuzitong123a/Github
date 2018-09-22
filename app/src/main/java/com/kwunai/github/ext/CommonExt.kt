@@ -11,3 +11,4 @@ fun Context.toast(message: String?): Toast = Toast
         }
 
 fun Fragment.toast(message: String?): Toast? = activity?.toast(message)
+

@@ -3,7 +3,6 @@ package com.kwunai.github.http.api
 import com.kwunai.github.GithubConfig
 import com.kwunai.github.entity.AuthorizationReq
 import com.kwunai.github.entity.AuthorizationRsp
-import com.kwunai.github.entity.Resource
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.Body
@@ -16,7 +15,7 @@ interface AuthService {
     @PUT("/authorizations/clients/${GithubConfig.clientId}/{fingerPrint}")
     fun createAuthorization(@Body req: AuthorizationReq,
                             @Path("fingerPrint") fingerPrint: String = GithubConfig.fingerPrint)
-            : Observable<Resource<AuthorizationRsp>>
+            : Observable<AuthorizationRsp>
 
 
     @DELETE("/authorizations/{id}")

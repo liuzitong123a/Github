@@ -1,7 +1,24 @@
 package com.kwunai.github.common
 
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.*
+import android.support.annotation.CallSuper
+import org.jetbrains.annotations.NotNull
 
 
-open class GithubViewModel : ViewModel(), LifecycleObserver
+open class GithubViewModel : ViewModel(), LifecycleObserver {
+
+    var lifecycleOwner: LifecycleOwner? = null
+
+    @CallSuper
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun onCreate(lifecycleOwner: LifecycleOwner) {
+        this.lifecycleOwner = lifecycleOwner
+    }
+
+    @CallSuper
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun onDestroy(@NotNull lifecycleOwner: LifecycleOwner) {
+        this.lifecycleOwner = null
+    }
+
+}

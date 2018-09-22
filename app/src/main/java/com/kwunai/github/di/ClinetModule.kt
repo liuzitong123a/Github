@@ -42,7 +42,7 @@ val clientModule: Kodein.Module = Kodein.Module(GITHUB_CLIENT_MODULE_TAG) {
     }
 
     bind<Interceptor>(GITHUB_INTERCEPTOR_AUTH_TAG) with singleton {
-        AuthInterceptor(instance(PREFS_MODULE_TAG))
+        AuthInterceptor(instance())
     }
 
     bind<OkHttpClient>() with singleton {
@@ -52,6 +52,7 @@ val clientModule: Kodein.Module = Kodein.Module(GITHUB_CLIENT_MODULE_TAG) {
                 .writeTimeout(GithubConstant.WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .addInterceptor(instance(GITHUB_INTERCEPTOR_LOG_TAG))
                 .addInterceptor(instance(GITHUB_INTERCEPTOR_ACCEPT_TAG))
+                .addInterceptor(instance(GITHUB_INTERCEPTOR_AUTH_TAG))
                 .build()
     }
 
