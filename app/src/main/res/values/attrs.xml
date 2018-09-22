@@ -1,0 +1,9 @@
+<resources>
+
+    <declare-styleable name="View">
+        <attr name="bind_visibility" format="boolean" />
+        <attr name="bind_onClick" format="reference" />
+        <attr name="bind_throttleFirst" format="integer" />
+    </declare-styleable>
+
+</resources>

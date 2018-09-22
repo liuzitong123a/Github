@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.facebook.stetho.Stetho
 import com.kwunai.github.di.clientModule
+import com.kwunai.github.di.prefsModule
 import com.kwunai.github.di.serviceModule
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -25,6 +26,7 @@ class GithubApp : Application(), KodeinAware {
 
         import(clientModule)
         import(serviceModule)
+        import(prefsModule)
     }
 
     override fun onCreate() {

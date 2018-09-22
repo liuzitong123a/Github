@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="com.kwunai.github.ui.main.MainActivity">
+        <activity android:name=".ui.user.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -26,6 +26,7 @@ ext {
 
             rxkotlin             : '2.2.0',
             rxandroid            : '2.1.0',
+            rxbinding            : '2.1.1',
             autodispose          : '1.0.0-RC2',
 
             logger               : '2.2.0',
@@ -74,6 +75,8 @@ ext {
 
             rxkotlin               : [group: 'io.reactivex.rxjava2', name: 'rxkotlin', version: versions.rxkotlin],
             rxandroid              : [group: 'io.reactivex.rxjava2', name: 'rxandroid', version: versions.rxandroid],
+            rxbinding              : [group: 'com.jakewharton.rxbinding2', name: 'rxbinding', version: versions.rxbinding],
+            rxbinding_v7           : [group: 'com.jakewharton.rxbinding2', name: 'rxbinding-appcompat-v7', version: versions.rxbinding],
 
             autodispose            : [group: 'com.uber.autodispose', name: 'autodispose-android', version: versions.autodispose],
             autodispose_ktx        : [group: 'com.uber.autodispose', name: 'autodispose-android-ktx', version: versions.autodispose],

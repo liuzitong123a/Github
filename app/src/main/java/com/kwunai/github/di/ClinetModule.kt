@@ -3,6 +3,7 @@ package com.kwunai.github.di
 import com.google.gson.Gson
 import com.kwunai.github.GithubConstant
 import com.kwunai.github.http.interceptors.AcceptInterceptor
+import com.kwunai.github.http.interceptors.AuthInterceptor
 import com.orhanobut.logger.Logger
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -20,10 +21,11 @@ import java.util.concurrent.TimeUnit
 const val GITHUB_CLIENT_MODULE_TAG = "ClientModule"
 
 const val GITHUB_INTERCEPTOR_LOG_TAG = "github_interceptor_log"
+const val GITHUB_INTERCEPTOR_AUTH_TAG = "github_interceptor_auth"
 const val GITHUB_INTERCEPTOR_ACCEPT_TAG = "github_interceptor_accept"
 
 
-val clientModule = Kodein.Module(GITHUB_CLIENT_MODULE_TAG) {
+val clientModule: Kodein.Module = Kodein.Module(GITHUB_CLIENT_MODULE_TAG) {
 
     bind<Retrofit.Builder>() with provider { Retrofit.Builder() }
 
@@ -39,6 +41,9 @@ val clientModule = Kodein.Module(GITHUB_CLIENT_MODULE_TAG) {
         AcceptInterceptor()
     }
 
+    bind<Interceptor>(GITHUB_INTERCEPTOR_AUTH_TAG) with singleton {
+        AuthInterceptor(instance(PREFS_MODULE_TAG))
+    }
 
     bind<OkHttpClient>() with singleton {
         instance<OkHttpClient.Builder>()
@@ -52,7 +57,7 @@ val clientModule = Kodein.Module(GITHUB_CLIENT_MODULE_TAG) {
 
     bind<Retrofit>() with singleton {
         instance<Retrofit.Builder>()
-                .baseUrl(GithubConstant.BASE_URL)
+                .baseUrl(GithubConstant.BASE_API)
                 .client(instance())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

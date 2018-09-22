@@ -67,6 +67,8 @@ dependencies {
 
     implementation libs.rxkotlin
     implementation libs.rxandroid
+    implementation libs.rxbinding
+    implementation libs.rxbinding_v7
 
     implementation libs.autodispose
     implementation libs.autodispose_ktx
