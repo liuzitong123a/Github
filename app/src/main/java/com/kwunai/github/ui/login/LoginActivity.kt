@@ -6,7 +6,11 @@ import com.kwunai.github.R
 import com.kwunai.github.common.GithubActivity
 import com.kwunai.github.databinding.ActivityLoginBinding
 import com.kwunai.github.entity.UserRsp
-import com.kwunai.github.ext.toast
+import com.kwunai.github.ui.main.MainActivity
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
+
+import org.jetbrains.anko.toast
 import org.kodein.di.Kodein
 import org.kodein.di.android.retainedKodein
 import org.kodein.di.generic.bind
@@ -31,8 +35,9 @@ class LoginActivity : GithubActivity<ActivityLoginBinding>() {
         viewModel.error.observe(this, Observer<Throwable> {
             toast(it?.message ?: "登录失败")
         })
-        viewModel.user.observe(this, Observer<UserRsp> { it ->
-
+        viewModel.user.observe(this, Observer<UserRsp> {
+            toast("登录成功")
+            startActivity(intentFor<MainActivity>())
         })
     }
 }

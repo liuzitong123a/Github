@@ -1,4 +1,4 @@
-package com.kwunai.github.ui.login
+package com.kwunai.github.ui.main
 
 import com.kwunai.github.ext.addLifecycle
 import com.kwunai.repo.AuthRepository
@@ -9,18 +9,17 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.scoped
 import org.kodein.di.generic.singleton
 
+const val MAIN_MODULE_TAG = "MAIN_MODULE_TAG"
 
-const val LOGIN_MODULE_TAG = "LOGIN_MODULE_TAG"
-
-val loginModule = Kodein.Module(LOGIN_MODULE_TAG) {
+val mainModule = Kodein.Module(MAIN_MODULE_TAG) {
 
     bind<AuthRepository>() with scoped(AndroidComponentsWeakScope).singleton {
         AuthRepository(instance(), instance(), instance())
     }
 
-    bind<LoginViewModel>() with scoped(AndroidComponentsWeakScope).singleton {
-        LoginViewModel(instance()).apply {
-            addLifecycle(instance<LoginActivity>())
+    bind<MainViewModal>() with scoped(AndroidComponentsWeakScope).singleton {
+        MainViewModal(instance()).apply {
+            addLifecycle(instance<MainActivity>())
         }
     }
 }

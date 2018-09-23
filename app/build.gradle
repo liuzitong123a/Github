@@ -66,6 +66,8 @@ dependencies {
 
     implementation libs.gson
 
+    implementation libs.anko
+
     implementation libs.rxkotlin
     implementation libs.rxandroid
     implementation libs.rxbinding

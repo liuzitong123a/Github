@@ -30,7 +30,6 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:bind_visibility="@{ viewModel.loading }"
@@ -57,10 +56,10 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
-                    android:layout_marginTop="36dp"
                     android:layout_marginBottom="24dp"
+                    android:layout_marginTop="36dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_github" />
+                    app:srcCompat="@drawable/ic_github" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -115,8 +114,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="24dp"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="24dp"
                     android:text="@string/login_sign_in"
                     android:textColor="?android:textColorPrimaryInverse"
                     android:textSize="18sp"

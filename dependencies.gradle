@@ -18,6 +18,8 @@ ext {
             arch_comp_persistence: '1.1.1',
             arch_comp_navigation : '1.0.0-alpha06',
 
+            anko                 : '0.10.6',
+
             retrofit             : '2.4.0',
             okhttp               : '3.11.0',
             kodein               : '5.2.0',
@@ -72,6 +74,8 @@ ext {
             retrofit_rxjava        : [group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: versions.retrofit],
 
             gson                   : [group: 'com.google.code.gson', name: 'gson', version: versions.gson],
+
+            anko                   : [group: 'org.jetbrains.anko', name: 'anko-commons', version: versions.anko],
 
             rxkotlin               : [group: 'io.reactivex.rxjava2', name: 'rxkotlin', version: versions.rxkotlin],
             rxandroid              : [group: 'io.reactivex.rxjava2', name: 'rxandroid', version: versions.rxandroid],
