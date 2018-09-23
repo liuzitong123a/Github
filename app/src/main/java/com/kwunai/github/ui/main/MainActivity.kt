@@ -12,8 +12,8 @@ import com.kwunai.github.databinding.ActivityMainBinding
 import com.kwunai.github.entity.UserRsp
 import com.kwunai.github.ext.*
 import com.kwunai.github.ui.login.LoginActivity
-import com.kwunai.repo.AuthRepository
-import com.kwunai.repo.OnAuthStateChangeListener
+import com.kwunai.github.repo.AuthRepository
+import com.kwunai.github.repo.OnAuthStateChangeListener
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.*
 import org.kodein.di.Kodein

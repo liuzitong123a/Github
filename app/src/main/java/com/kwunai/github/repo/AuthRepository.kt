@@ -1,4 +1,4 @@
-package com.kwunai.repo
+package com.kwunai.github.repo
 
 import com.kwunai.github.data.PrefsHelper
 import com.kwunai.github.entity.AuthorizationReq
@@ -10,8 +10,6 @@ import com.kwunai.github.http.error.TokenInvalidException
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import retrofit2.HttpException
-import retrofit2.Response
 
 /**
  * 用户发生改变的回调

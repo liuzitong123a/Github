@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import com.kwunai.github.common.GithubViewModel
 import com.kwunai.github.entity.Resource
 import com.kwunai.github.ext.bindLifecycle
-import com.kwunai.repo.AuthRepository
+import com.kwunai.github.repo.AuthRepository
 
 
 class MainViewModal(

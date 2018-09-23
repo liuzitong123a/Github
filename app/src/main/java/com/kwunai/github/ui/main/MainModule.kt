@@ -1,7 +1,7 @@
 package com.kwunai.github.ui.main
 
 import com.kwunai.github.ext.addLifecycle
-import com.kwunai.repo.AuthRepository
+import com.kwunai.github.repo.AuthRepository
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.generic.bind
