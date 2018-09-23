@@ -38,6 +38,7 @@ class LoginActivity : GithubActivity<ActivityLoginBinding>() {
         viewModel.user.observe(this, Observer<UserRsp> {
             toast("登录成功")
             startActivity(intentFor<MainActivity>())
+            finish()
         })
     }
 }
