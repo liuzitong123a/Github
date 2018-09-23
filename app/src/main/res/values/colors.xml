@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#24292E</color>
-    <color name="colorPrimaryDark">#333333</color>
-    <color name="colorAccent">#3F51B5</color>
-
-    <color name="primaryLightColor">#cfd8dc</color>
-
-    <color name="secondaryColor">#455a64</color>
-    <color name="secondaryLightColor">#718792</color>
-    <color name="secondaryDarkColor">#1c313a</color>
-
-    <color name="primaryTextColor">#263238</color>
-    <color name="secondaryTextColor">#607d8b</color>
-
-    <color name="white">#ffffff</color>
-
-
     <color name="textColorPrimaryInverse">#24292E</color>
     <color name="textColorSecondaryInverse">#333333</color>
     <color name="textColorTertiaryInverse">#555555</color>
@@ -30,6 +14,10 @@
     <color name="colorAccentDark">#2332B5</color>
     <color name="colorBackground">#F3F3F3</color>
     <color name="windowBackground">#EEEEEE</color>
+
+    <color name="colorPrimary">#24292E</color>
+    <color name="colorPrimaryDark">#333333</color>
+    <color name="colorAccent">#3F51B5</color>
 
 
     <color name="colorBackgroundInverse">#333333</color>

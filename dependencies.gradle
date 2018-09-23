@@ -10,7 +10,7 @@ ext {
     ]
 
     versions = [
-            android_plugin       : '3.3.0-alpha11',
+            android_plugin       : '3.3.0-alpha10',
             kotlin               : '1.2.70',
 
             support              : '28.0.0-rc02',

@@ -22,15 +22,15 @@
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@string/login_sign_in"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="?android:textColorPrimaryInverse" />
 
         <ProgressBar
             android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:bind_visibility="@{ viewModel.loading }"
@@ -57,17 +57,17 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
-                    android:layout_marginBottom="24dp"
                     android:layout_marginTop="36dp"
+                    android:layout_marginBottom="24dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@mipmap/ic_github" />
+                    android:src="@drawable/ic_github" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/login_tips"
-                    android:textColor="@color/primaryTextColor"
+                    android:textColor="?android:textColorPrimaryInverse"
                     android:textSize="24sp" />
 
                 <android.support.design.widget.TextInputLayout
@@ -84,7 +84,8 @@
                         android:hint="@string/login_hint_username"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="@={ viewModel.username }" />
+                        android:text="@={ viewModel.username }"
+                        android:textColor="?android:textColorPrimaryInverse" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -103,21 +104,21 @@
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:text="@={ viewModel.password }" />
+                        android:text="@={ viewModel.password }"
+                        android:textColor="?android:textColorPrimaryInverse" />
 
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/email_sign_in_button"
+                    style="?android:textAppearanceSmall"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="24dp"
-                    android:background="@drawable/selector_login_button"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:text="@string/login_sign_in"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="?android:textColorPrimaryInverse"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:bind_onClick="@{ (v) -> viewModel.login() }" />

@@ -18,4 +18,7 @@ class PrefsHelper(prefs: SharedPreferences) {
     var user: UserRsp? by prefs.gson<UserRsp?>(null)
 
     fun isLoggedIn(): Boolean = token.isNotEmpty()
+
+
+    var navigationLastSelected: Int by prefs.int()
 }

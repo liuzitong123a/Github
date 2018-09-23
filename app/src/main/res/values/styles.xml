@@ -22,6 +22,47 @@
         <item name="windowNoTitle">true</item>
 
         <item name="sideBarBackground">@drawable/side_nav_bar</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
+    </style>
+
+    <style name="AppTheme.Translucent">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorTertiary">@color/textColorTertiary</item>
+
+        <item name="android:textColorPrimaryInverse">@color/textColorPrimary</item>
+        <item name="android:textColorSecondaryInverse">@color/textColorSecondary</item>
+        <item name="android:textColorTertiaryInverse">@color/textColorTertiary</item>
+
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackgroundInverse</item>
+        <item name="android:windowBackground">@color/windowBackgroundInverse</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="sideBarBackground">@drawable/side_nav_bar_night</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme.Dark</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert" />
+
+    <style name="AlertDialogTheme.Dark">
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorTertiary">@color/textColorTertiary</item>
+        <item name="android:windowBackground">@color/colorBackgroundInverse</item>
     </style>
 
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
