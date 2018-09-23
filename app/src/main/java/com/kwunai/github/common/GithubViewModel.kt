@@ -5,19 +5,38 @@ import android.support.annotation.CallSuper
 import org.jetbrains.annotations.NotNull
 
 
-open class GithubViewModel : ViewModel(), LifecycleObserver {
+open class GithubViewModel : ViewModel(), IViewModel {
+
 
     var lifecycleOwner: LifecycleOwner? = null
 
     @CallSuper
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreate(lifecycleOwner: LifecycleOwner) {
+    override fun onCreate(lifecycleOwner: LifecycleOwner) {
         this.lifecycleOwner = lifecycleOwner
     }
 
     @CallSuper
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy(@NotNull lifecycleOwner: LifecycleOwner) {
+    override fun onStart(lifecycleOwner: LifecycleOwner) {
+
+    }
+
+    @CallSuper
+    override fun onResume(lifecycleOwner: LifecycleOwner) {
+
+    }
+
+    @CallSuper
+    override fun onPause(lifecycleOwner: LifecycleOwner) {
+
+    }
+
+    @CallSuper
+    override fun onStop(lifecycleOwner: LifecycleOwner) {
+
+    }
+
+    @CallSuper
+    override fun onDestroy(@NotNull lifecycleOwner: LifecycleOwner) {
         this.lifecycleOwner = null
     }
 

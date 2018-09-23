@@ -1,6 +1,7 @@
 package com.kwunai.github.entity
 
 
+@Suppress("unused")
 sealed class Resource<out T> {
 
     companion object {

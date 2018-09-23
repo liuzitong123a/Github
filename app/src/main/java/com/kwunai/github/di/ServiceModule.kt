@@ -1,6 +1,7 @@
 package com.kwunai.github.di
 
 import com.kwunai.github.http.api.AuthService
+import com.kwunai.github.http.api.RepoService
 import com.kwunai.github.http.api.UserService
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
@@ -19,5 +20,9 @@ val serviceModule = Kodein.Module(SERVICE_MODULE_TAG) {
 
     bind<UserService>() with singleton {
         instance<Retrofit>().create(UserService::class.java)
+    }
+
+    bind<RepoService>() with singleton {
+        instance<Retrofit>().create(RepoService::class.java)
     }
 }
