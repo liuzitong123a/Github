@@ -2,6 +2,7 @@ package com.kwunai.github.ui.main
 
 import com.kwunai.github.ext.addLifecycle
 import com.kwunai.github.repo.AuthRepository
+import com.kwunai.github.ui.main.repo.RepoFragment
 import org.kodein.di.Kodein
 import org.kodein.di.android.AndroidComponentsWeakScope
 import org.kodein.di.generic.bind
@@ -22,4 +23,6 @@ val mainModule = Kodein.Module(MAIN_MODULE_TAG) {
             addLifecycle(instance<MainActivity>())
         }
     }
+
+
 }

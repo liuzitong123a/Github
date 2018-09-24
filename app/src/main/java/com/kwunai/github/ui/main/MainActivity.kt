@@ -43,6 +43,10 @@ class MainActivity : GithubActivity<ActivityMainBinding>(), OnAuthStateChangeLis
 
     private val helper: PrefsHelper by instance()
 
+    val actionBarController by lazy {
+        ActionBarController(this)
+    }
+
     private val navigationController by lazy {
         NavigationController(helper, navigationView, ::onNavItemChanged, ::handleNavigationHeaderClickEvent)
     }

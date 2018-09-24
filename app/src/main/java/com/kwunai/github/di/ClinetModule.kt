@@ -14,6 +14,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.GithubCallAdapterFactory
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -60,7 +61,7 @@ val clientModule: Kodein.Module = Kodein.Module(GITHUB_CLIENT_MODULE_TAG) {
         instance<Retrofit.Builder>()
                 .baseUrl(GithubConstant.BASE_API)
                 .client(instance())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(GithubCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }

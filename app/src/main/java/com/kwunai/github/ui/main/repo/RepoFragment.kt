@@ -1,38 +1,22 @@
 package com.kwunai.github.ui.main.repo
 
-import android.databinding.ViewDataBinding
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.View
-import com.kwunai.github.GithubApp
-import com.kwunai.github.R
-import com.kwunai.github.common.GithubFragment
-import com.kwunai.github.databinding.FragmentRepoBinding
-import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
+import com.kwunai.github.common.pager.FragmentPage
+import com.kwunai.github.common.pager.GithubPagerFragment
 
 /**
  * 仓库相关页面ViewPager载体
  * @author lzt
  */
-class RepoFragment : GithubFragment<FragmentRepoBinding>() {
+class RepoFragment : GithubPagerFragment() {
 
-
-    override val layoutId: Int = R.layout.fragment_repo
-
-    override val kodein: Kodein = Kodein.lazy {
-        extend(GithubApp.INSTANCE.kodein)
-        import(repoModule)
-        bind<RepoFragment>() with instance(this@RepoFragment)
+    override fun getFragmentPagesLoggedIn(): List<FragmentPage> {
+        return listOf(
+                FragmentPage(RepoListFragment(), "我的"),
+                FragmentPage(RepoListFragment(), "全部")
+        )
     }
 
-    private val viewModel: RepoViewModel by instance()
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.viewModel = viewModel
+    override fun getFragmentPagesLoggedOut(): List<FragmentPage> {
+        return listOf(FragmentPage(RepoListFragment(), "全部"))
     }
-
-
 }

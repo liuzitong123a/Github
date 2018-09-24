@@ -44,11 +44,11 @@
 
                     <android.support.design.widget.TabLayout
                         android:id="@+id/tabLayout"
-                        style="@style/TabTextAppearance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
-                        app:tabMode="scrollable" />
+                        app:tabIndicatorHeight="0dp"
+                        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
                 </android.support.design.widget.AppBarLayout>
 

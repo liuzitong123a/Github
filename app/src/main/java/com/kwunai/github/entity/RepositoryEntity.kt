@@ -3,6 +3,7 @@ package com.kwunai.github.entity
 
 import com.google.gson.annotations.SerializedName
 import com.kwunai.github.anno.PoKo
+import retrofit2.adapter.rxjava2.PagingWrapper
 
 
 @PoKo
@@ -10,8 +11,9 @@ data class SearchRepo(
         @SerializedName("total_count")
         val total: Int = 0,
         val items: List<Repository>
-) {
-    var nextPage: Int? = null
+) : PagingWrapper<Repository>() {
+
+    override fun getElements(): List<Repository> = items
 }
 
 
