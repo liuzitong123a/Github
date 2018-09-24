@@ -35,7 +35,7 @@ abstract class GithubPagerFragment : GithubFragment<FragmentPagerBinding>(),
 
     private val authRepository: AuthRepository by instance()
 
-    private val helper: PrefsHelper by instance()
+    protected val helper: PrefsHelper by instance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

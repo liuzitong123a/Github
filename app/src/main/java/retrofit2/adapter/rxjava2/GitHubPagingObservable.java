@@ -35,6 +35,7 @@ final class GitHubPagingObservable<GitHubPagingBody> extends Observable<GitHubPa
             observer.onSubscribe(disposable);
         }
 
+        @SuppressWarnings("ConstantConditions")
         @Override
         public void onNext(Response<GitHubPagingBody> response) {
             if (response.isSuccessful()) {

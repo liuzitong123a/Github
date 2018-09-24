@@ -1,4 +1,4 @@
-package com.kwunai.github.ui.main.repo.search
+package com.kwunai.github.ui.main.repo
 
 import com.kwunai.github.entity.Repository
 import com.kwunai.github.ext.format
@@ -10,13 +10,19 @@ import retrofit2.adapter.rxjava2.GitHubPaging
 import java.util.*
 
 
-class SearchRepoListPage(
+class RepoListPage(
+        private val owner: String? = null,
         private val repoService: RepoService
 ) : ListPage<Repository>() {
     override fun getData(page: Int): Observable<GitHubPaging<Repository>> {
-        return repoService.searchRepo(page = page, q = "pushed:<" + Date()
-                .format("yyyy-MM-dd"))
-                .subscribeOn(Schedulers.io())
-                .map { it.paging }
+        return if (owner == null) {
+            repoService.searchRepo(page = page, q = "pushed:<" + Date()
+                    .format("yyyy-MM-dd"))
+                    .subscribeOn(Schedulers.io())
+                    .map { it.paging }
+        } else {
+            repoService.userRepo(page = page, owner = owner)
+        }
+
     }
 }
